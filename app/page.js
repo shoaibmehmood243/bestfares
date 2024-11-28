@@ -206,10 +206,14 @@ export default function Home() {
             <h6 className="text-white text-lg font-medium mb-3">Social Links</h6>
             <ul className="flex gap-3 items-center">
               <li className="text-white my-3 text-sm flex items-center gap-2">
-                <FaFacebook className="text-xl" />
+                <a href="https://www.facebook.com/profile.php?id=61568623533722" target="_blank">
+                  <FaFacebook className="text-xl" />
+                </a>
               </li>
               <li className="text-white my-3 text-sm flex items-center gap-2">
-                <FaInstagram className="text-xl" />
+                <a href="https://www.instagram.com/bestfares786/" target="_blank">
+                  <FaInstagram className="text-xl" />
+                </a>
               </li>
               <li className="text-white my-3 text-sm flex items-center gap-2">
                 <FaTwitter className="text-xl" />
