@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/common/Header";
 import Banner from "@/components/common/Banner";
 import { FaPhoneAlt } from "react-icons/fa";
+import Script from 'next/script';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -41,6 +42,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=G-EC8RKSRLDQ`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EC8RKSRLDQ');
+        `}
+      </Script>
       <body
         className={poppins.className + ` antialiased`}
       >
