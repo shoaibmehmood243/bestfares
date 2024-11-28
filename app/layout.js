@@ -12,7 +12,30 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Best Fares",
-  description: "Best Travel Agency in Lahore",
+  description: "Best Travel Agency in Lahore, offering the best fares for flights, tours, and travel packages.",
+  keywords: ["Best Fares", "Travel Agency", "Flights", "Tours", "Lahore"],
+  openGraph: {
+    title: "Best Fares",
+    description: "Best Travel Agency in Lahore, offering the best fares for flights, tours, and travel packages.",
+    url: "https://bestfaress.com",
+    siteName: "Best Fares",
+    images: [
+      {
+        url: "https://www.bestfaress.com/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Best Fares Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Fares",
+    description: "Best Travel Agency in Lahore, offering the best fares for flights, tours, and travel packages.",
+    images: ["https://www.bestfaress.com/logo.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
