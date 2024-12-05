@@ -131,10 +131,9 @@ export default function Visas() {
                         const rowNumber = Math.floor(index / 2);
                         const isEvenRow = rowNumber % 2 === 0;
                         return (
-                            <AlertDialog>
+                            <AlertDialog key={index}>
                                 <AlertDialogTrigger>
                                     <div 
-                                        key={index} 
                                         className={`p-2 border border-blue-300 rounded-md flex items-center gap-2 ${
                                             isEvenRow ? 'bg-white' : 'bg-blue-300'
                                         }`}
