@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 import Banner from "@/components/common/Banner";
 import { FaPhoneAlt } from "react-icons/fa";
 import Script from 'next/script';
+import Footer from '@/components/common/Footer';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -67,6 +68,7 @@ export default function RootLayout({ children }) {
           <Header />
         </div>
         {children}
+        <Footer />
       </body>
     </html>
   );
