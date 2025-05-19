@@ -7,10 +7,13 @@ import { IoMdMail } from "react-icons/io";
 export default function Footer() {
     return (
         <footer id="footer" className="pt-10 bg-primary">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-10 pb-5">
-                <Link href='/'>
-                    <Image src="/logo-dark.png" alt="Logo" width={150} height={24} />
-                </Link>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 px-10 pb-5">
+                <div>
+                    <Link href='/'>
+                        <Image src="/logo-dark.png" alt="Logo" width={150} height={24} />
+                    </Link>
+                    <p className="text-white text-sm">BestFares is a travel agency offering great deals on flights, hotels, visas and tours. We make trip planning easy with transparent pricing and 24/7 customer support.</p>
+                </div>
                 <div className="px-2">
                     <h6 className="text-white text-lg font-medium mb-3">Contact Us</h6>
                     <ul>
@@ -42,6 +45,10 @@ export default function Footer() {
                         <FaTwitter className="text-xl" />
                     </li>
                     </ul>
+                </div>
+                <div className="px-2">
+                    <h6 className="text-white text-lg font-medium mb-3">Direction</h6>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.275615488584!2d74.34214957509434!3d31.51658924732983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e10cde5bf32e143%3A0xb99cc7e77ec439f2!2sBest%20Fares%20Travel%20and%20Tours!5e0!3m2!1sen!2s!4v1747655026369!5m2!1sen!2s" width="250" height="200" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div className="border-t border-gray-300 py-5">

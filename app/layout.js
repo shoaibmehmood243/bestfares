@@ -1,12 +1,14 @@
-import { Poppins } from 'next/font/google';
+import { Quicksand } from 'next/font/google';
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Banner from "@/components/common/Banner";
 import { FaPhoneAlt } from "react-icons/fa";
 import Script from 'next/script';
 import Footer from '@/components/common/Footer';
+import { Toaster } from 'react-hot-toast';
 
-const poppins = Poppins({
+const quicksand = Quicksand({
+  variable: '--font-quicksand',
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
@@ -79,7 +81,7 @@ export default function RootLayout({ children }) {
         />
       </noscript>
       <body
-        className={poppins.className + ` antialiased`}
+        className={`${quicksand.variable} font-quicksand antialiased`}
       >
         <div className='fixed bottom-4 right-4 z-10'>
           <a href='tel:+923111421111' className='flex justify-center items-center rounded-full bg-primary w-14 h-14 shadow-lg hover:scale-110 transition-transform duration-2000 animate-pulse hover:animate-bounce'>
@@ -90,6 +92,7 @@ export default function RootLayout({ children }) {
           <Banner />
           <Header />
         </div>
+        <Toaster position="top-center" />
         {children}
         <Footer />
       </body>
