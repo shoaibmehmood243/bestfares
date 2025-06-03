@@ -40,7 +40,7 @@ export default function FlightQuerySection() {
                     toast.error("❌ Failed to send email.");
                 }
             })
-            .catch((err) => {
+            .catch(() => {
                 setStatusType("error");
                 toast.error("❌ Error sending email.");
             })
@@ -48,6 +48,47 @@ export default function FlightQuerySection() {
                 setLoading(false);
             });
     }
+
+    const floatingInput = (name, type, label, required = false) => (
+        <div className="relative w-full">
+            <input
+                name={name}
+                type={type}
+                id={name}
+                placeholder=" "
+                required={required}
+                className="peer w-full border rounded px-4 pt-6 pb-2 text-sm text-gray-900 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            />
+            <label
+                htmlFor={name}
+                className="absolute left-4 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary"
+            >
+                {label}
+            </label>
+        </div>
+    );
+
+    const floatingSelect = (name, label, options, required = false) => (
+        <div className="relative w-full">
+            <select
+                name={name}
+                id={name}
+                required={required}
+                className="peer w-full border rounded px-4 pt-6 pb-2 text-sm text-gray-900 bg-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            >
+                <option value="" disabled hidden></option>
+                {options.map((opt, idx) => (
+                    <option key={idx} value={opt.value}>{opt.label}</option>
+                ))}
+            </select>
+            <label
+                htmlFor={name}
+                className="absolute left-4 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary"
+            >
+                {label}
+            </label>
+        </div>
+    );
 
     return (
         <section id="flight-booking" className="z-[1] w-full">
@@ -60,46 +101,28 @@ export default function FlightQuerySection() {
                 </p>
 
                 {statusMessage && (
-                    <p
-                        className={`text-center mb-4 font-medium ${
-                            statusType === "success" ? "text-green-600" : "text-red-600"
-                        }`}
-                    >
+                    <p className={`text-center mb-4 font-medium ${statusType === "success" ? "text-green-600" : "text-red-600"}`}>
                         {statusMessage}
                     </p>
                 )}
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
-                    <input name="fullName" type="text" placeholder="Full Name" className="w-full border rounded px-4 py-2" required />
+                    {floatingInput("fullName", "text", "Full Name", true)}
                     <div className="flex gap-4">
-                        <input name="email" type="email" placeholder="Email" className="w-full border rounded px-4 py-2" required />
-                        <input name="phone" type="tel" placeholder="Phone Number" className="w-full border rounded px-4 py-2" required />
+                        {floatingInput("email", "email", "Email", true)}
+                        {floatingInput("phone", "tel", "Phone Number", true)}
                     </div>
                     <div className="flex gap-4">
-                        <input name="fromCity" type="text" placeholder="From City" className="w-full border rounded px-4 py-2" required />
-                        <input name="toCity" type="text" placeholder="To City" className="w-full border rounded px-4 py-2" required />
+                        {floatingInput("fromCity", "text", "From City", true)}
+                        {floatingInput("toCity", "text", "To City", true)}
                     </div>
                     <div className="flex flex-col md:flex-row gap-4">
-                        <input name="departing" type="date" className="w-full border rounded px-4 py-2" required />
-                        <input name="returning" type="date" className="w-full border rounded px-4 py-2" />
+                        {floatingInput("departing", "date", "Departing", true)}
+                        {floatingInput("returning", "date", "Returning")}
                     </div>
                     <div className="flex gap-4">
-                        <select name="adults" className="w-full border rounded px-4 py-2" required>
-                            <option value="">No. of Adults</option>
-                            {[...Array(10)].map((_, i) => (
-                                <option key={i} value={i + 1}>
-                                    {i + 1}
-                                </option>
-                            ))}
-                        </select>
-                        <select name="children" className="w-full border rounded px-4 py-2">
-                            <option value="">No. of Children</option>
-                            {[...Array(10)].map((_, i) => (
-                                <option key={i} value={i}>
-                                    {i}
-                                </option>
-                            ))}
-                        </select>
+                        {floatingSelect("adults", "No. of Adults", Array.from({ length: 10 }, (_, i) => ({ value: i + 1, label: `${i + 1}` })), true)}
+                        {floatingSelect("children", "No. of Children", Array.from({ length: 10 }, (_, i) => ({ value: i, label: `${i}` })))}
                     </div>
                     <Button className="w-full mt-2" type="submit" disabled={loading}>
                         {loading ? "Sending..." : "Submit"}

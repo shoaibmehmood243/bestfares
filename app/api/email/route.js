@@ -3,13 +3,13 @@ import nodemailer from "nodemailer";
 
 export async function POST(request) {
   const {
-    name,
+    fullName,
     email,
     phone,
     fromCity,
     toCity,
-    departingOn,
-    returningOn,
+    departing,
+    returning,
     adults,
     children,
   } = await request.json();
@@ -27,15 +27,15 @@ export async function POST(request) {
   const message = `
 New Flight Booking Query Received:
 
-Name: ${name}
+Name: ${fullName}
 Email: ${email}
 Phone: ${phone}
 
 From: ${fromCity}
 To: ${toCity}
 
-Departing On: ${departingOn}
-Returning On: ${returningOn || "N/A"}
+Departing On: ${departing}
+Returning On: ${returning || "N/A"}
 
 Adults: ${adults}
 Children: ${children}
@@ -46,7 +46,7 @@ Submitted via BestFaress.com
   const mailOptions = {
     from: "support@bestfaress.com",
     to: "support@bestfaress.com",
-    subject: `Flight Booking Query from ${name} (${email})`,
+    subject: `Flight Booking Query from ${fullName} (${email})`,
     text: message,
   };
 
