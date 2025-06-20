@@ -2,6 +2,36 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(request) {
+  const body = await request.json();
+
+  // Check for visa consultation fields
+  if (body?.visa) {
+    const { name, email, phone, visa, message } = body;
+    const transport = nodemailer.createTransport({
+      host: "smtpout.secureserver.net",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "support@bestfaress.com",
+        pass: "Bestfaress786@", // ⚠️ Don't hardcode this in production!
+      },
+    });
+    const mailBody = `\nNew Visa Consultation Query Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nVisa Type: ${visa}\nMessage: ${message || "N/A"}\n\nSubmitted via BestFaress.com\n`;
+    const mailOptions = {
+      from: "support@bestfaress.com",
+      to: "support@bestfaress.com",
+      subject: `Visa Consultation Query from ${name} (${email})`,
+      text: mailBody,
+    };
+    try {
+      await transport.sendMail(mailOptions);
+      return NextResponse.json({ message: "Email sent" });
+    } catch (err) {
+      return NextResponse.json({ error: err.message }, { status: 500 });
+    }
+  }
+
+  // Default: Flight booking
   const {
     fullName,
     email,
@@ -12,7 +42,7 @@ export async function POST(request) {
     returning,
     adults,
     children,
-  } = await request.json();
+  } = body;
 
   const transport = nodemailer.createTransport({
     host: "smtpout.secureserver.net",
@@ -24,24 +54,7 @@ export async function POST(request) {
     },
   });
 
-  const message = `
-New Flight Booking Query Received:
-
-Name: ${fullName}
-Email: ${email}
-Phone: ${phone}
-
-From: ${fromCity}
-To: ${toCity}
-
-Departing On: ${departing}
-Returning On: ${returning || "N/A"}
-
-Adults: ${adults}
-Children: ${children}
-
-Submitted via BestFaress.com
-`;
+  const message = `\nNew Flight Booking Query Received:\n\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone}\n\nFrom: ${fromCity}\nTo: ${toCity}\n\nDeparting On: ${departing}\nReturning On: ${returning || "N/A"}\n\nAdults: ${adults}\nChildren: ${children}\n\nSubmitted via BestFaress.com\n`;
 
   const mailOptions = {
     from: "support@bestfaress.com",
@@ -56,7 +69,7 @@ Submitted via BestFaress.com
         if (!err) {
           resolve("Email sent");
         } else {
-            console.log(err)
+          console.log(err);
           reject(err.message);
         }
       });

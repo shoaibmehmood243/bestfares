@@ -3,6 +3,7 @@ import { GiCommercialAirplane } from "react-icons/gi";
 import { FaHotel } from "react-icons/fa6";
 import { MdFamilyRestroom } from "react-icons/md";
 import { IoIosGlobe } from "react-icons/io";
+import { FaKaaba } from "react-icons/fa";
 
 const services = [
   {
@@ -18,6 +19,13 @@ const services = [
     buttonLabel: "Show Hotels",
     image: "/images/hotels.png", // Replace with your actual image path
     icon: <FaHotel />,
+  },
+  {
+    label: "Umrah",
+    description: "Plan your spiritual journey with our tailored Umrah packages",
+    buttonLabel: "View Umrah Packages",
+    image: "/images/umrah.jpeg  `           q ` `44b  H``NN BBBBBBBBBBBBBBr76ttt  7HNM N  nnnnnnnnnnnmnq  UJIUJIK", // Replace with your actual image path
+    icon: <FaKaaba />,
   },
   {
     label: "Tours",
