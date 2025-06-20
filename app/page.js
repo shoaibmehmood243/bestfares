@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div id="home">
       <HeroSection />
-      <section id="services" className="mt-20 pb-10 px-5 md:px-10">
+      <section id="services" className="mt-20 pb-10 px-5">
         <h2 className="text-primary text-3xl font-semibold text-center mb-8">Our Services</h2>
         <ServicesSection />
       </section>

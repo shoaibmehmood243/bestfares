@@ -23,8 +23,8 @@ const services = [
   {
     label: "Umrah",
     description: "Plan your spiritual journey with our tailored Umrah packages",
-    buttonLabel: "View Umrah Packages",
-    image: "/images/umrah.jpeg  `           q ` `44b  H``NN BBBBBBBBBBBBBBr76ttt  7HNM N  nnnnnnnnnnnmnq  UJIUJIK", // Replace with your actual image path
+    buttonLabel: "Umrah Packages",
+    image: "/images/umrah.jpeg", // Replace with your actual image path
     icon: <FaKaaba />,
   },
   {
@@ -45,7 +45,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-0 md:px-12 py-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 px-0 md:px-2 py-10">
       {services.map((service, idx) => (
         <div
           key={idx}
