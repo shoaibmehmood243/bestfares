@@ -4,6 +4,7 @@ import { FaHotel } from "react-icons/fa6";
 import { MdFamilyRestroom } from "react-icons/md";
 import { IoIosGlobe } from "react-icons/io";
 import { FaKaaba } from "react-icons/fa";
+import Image from "next/image";
 
 const services = [
   {
@@ -51,7 +52,7 @@ export default function ServicesSection() {
           key={idx}
           className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer"
         >
-          <img
+          <Image
             src={service.image}
             alt={service.label}
             className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"

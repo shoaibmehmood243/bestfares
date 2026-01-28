@@ -6,6 +6,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import Script from 'next/script';
 import Footer from '@/components/common/Footer/index';
 import { Toaster } from 'react-hot-toast';
+import Image from 'next/image';
 
 const quicksand = Quicksand({
   variable: '--font-quicksand',
@@ -72,7 +73,7 @@ export default function RootLayout({ children }) {
         `}
       </Script>
       <noscript>
-        <img
+        <Image
           height="1"
           width="1"
           style={{ display: 'none' }}

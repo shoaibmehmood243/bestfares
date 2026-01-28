@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 
@@ -82,7 +83,7 @@ export default function TestimonialsSection() {
 
                         {/* Customer Info */}
                         <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                            <img
+                            <Image
                                 src={testimonial.image}
                                 alt={testimonial.name}
                                 className="w-12 h-12 rounded-full object-cover"
