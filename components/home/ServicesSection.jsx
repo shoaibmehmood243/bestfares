@@ -49,17 +49,17 @@ export default function ServicesSection() {
       {services.map((service, idx) => (
         <div
           key={idx}
-          className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300"
+          className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer"
         >
           <img
             src={service.image}
             alt={service.label}
-            className="w-full h-80 object-cover"
+            className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-5 text-white">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-end p-5 text-white group-hover:from-black/80 transition-all duration-300">
             <h3 className="text-xl font-semibold">{service.label}</h3>
             <p className="text-sm mb-3">{service.description}</p>
-            <button className="bg-primary text-white text-sm justify-center px-4 py-2 rounded flex items-center gap-2 hover:bg-primary/90 transition">
+            <button className="bg-primary text-white text-sm justify-center px-4 py-2 rounded flex items-center gap-2 hover:bg-primary/90 transition-all transform group-hover:scale-105">
               <span className="text-lg">{service.icon}</span>
               {service.buttonLabel}
             </button>

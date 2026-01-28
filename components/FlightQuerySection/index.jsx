@@ -92,7 +92,7 @@ export default function FlightQuerySection() {
 
     return (
         <section id="flight-booking" className="z-[1] w-full">
-            <div className="w-full md:w-4/5 max-w-2xl mx-auto bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-xl px-6 py-4 md:py-4 md:px-6">
+            <div className="w-full md:w-4/5 max-w-2xl mx-auto bg-white/95 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl px-6 py-6 md:py-6 md:px-8 hover:shadow-3xl transition-shadow duration-300">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-gray-800">
                     Ready to <span className="text-primary">Take Off</span>?
                 </h2>

@@ -388,43 +388,93 @@ const countryVisas = [
 export default function Visas() {
     return (
         <div id="visa">
-            <section id="hero">
+            <section id="hero" className="relative">
                 <div className="visa absolute z-[1] min-h-screen w-full flex justify-center items-center flex-col">
-                <h1 className="text-3xl md:text-4xl font-semibold mx-auto md:w-1/2 text-center leading-10 mt-36 md:mt-12">Get Your Visa</h1>
-                <p className="text-base mx-auto md:w-1/2 text-center mb-6 mt-2">Avail The Opportunity to Make Your Travel History</p>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-0"></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 px-4">
+                        <h1 className="text-4xl md:text-6xl font-bold mx-auto max-w-4xl text-center leading-tight text-white drop-shadow-2xl animate-fadeIn">
+                            Get Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Visa</span> Hassle-Free
+                        </h1>
+                        <p className="text-lg md:text-xl mx-auto max-w-2xl text-center mt-6 text-gray-100 font-medium drop-shadow-lg animate-fadeIn" style={{ animationDelay: '200ms' }}>
+                            Avail The Opportunity to Make Your Travel History with Our Expert Visa Services
+                        </p>
+
+                        {/* Quick Stats */}
+                        <div className="flex flex-wrap justify-center gap-8 mt-12 animate-fadeIn" style={{ animationDelay: '400ms' }}>
+                            <div className="text-center">
+                                <p className="text-4xl font-bold text-cyan-300">12+</p>
+                                <p className="text-sm text-gray-200">Countries</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-4xl font-bold text-cyan-300">Fast</p>
+                                <p className="text-sm text-gray-200">Processing</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-4xl font-bold text-cyan-300">24/7</p>
+                                <p className="text-sm text-gray-200">Support</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="bg-custom-gradient min-h-screen relative w-full"></div>
             </section>
-            <section id="visas" className="pt-20 pb-10 px-2 md:px-10 bg-[#f4f8fb]">
-                <p className="text-primary text-2xl font-bold text-center mb-10 tracking-wide">VISAS</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center items-stretch gap-8 w-full max-w-5xl mx-auto">
+            <section id="visas" className="pt-20 pb-10 px-2 md:px-10 bg-gradient-to-b from-gray-50 to-white">
+                <div className="text-center mb-12">
+                    <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-2">Available Visas</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Choose Your <span className="text-primary">Destination</span></h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">Select from our wide range of visa services for popular destinations worldwide</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-stretch gap-6 w-full max-w-7xl mx-auto">
                     {countryVisas.map((country, index) => (
                         <AlertDialog key={index}>
                             <AlertDialogTrigger asChild>
                                 <div
                                     className={
-                                        `p-5 bg-white border border-blue-200 rounded-2xl shadow-md flex flex-col items-center gap-3 transition-transform duration-200 hover:scale-105 hover:shadow-xl cursor-pointer opacity-0 animate-fadeIn`}
+                                        `relative p-6 bg-white border-2 border-transparent rounded-2xl shadow-lg hover:shadow-2xl flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 hover:border-primary/30 cursor-pointer opacity-0 animate-fadeIn group overflow-hidden`}
                                     style={{ animationDelay: `${index * 60}ms`, animationFillMode: 'forwards' }}
                                 >
-                                    <Image
-                                        src={country.flag}
-                                        alt={country.name}
-                                        width={60}
-                                        height={60}
-                                        className="rounded-full border border-blue-100 shadow-sm"
-                                    />
-                                    <p className="text-lg font-semibold text-blue-900 text-center mt-2">{country.name}</p>
+                                    {/* Gradient Background on Hover */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                    {/* Visa Type Badge */}
+                                    <span className={`absolute top-3 right-3 text-white px-2 py-1 rounded-full font-bold text-xs ${country.badgeColor} z-10`}>
+                                        {country.visaType}
+                                    </span>
+
+                                    <div className="relative z-10">
+                                        <Image
+                                            src={country.flag}
+                                            alt={country.name}
+                                            width={70}
+                                            height={70}
+                                            className="rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <p className="text-lg font-bold text-gray-800 text-center mt-2 relative z-10 group-hover:text-primary transition-colors">{country.name}</p>
                                 </div>
                             </AlertDialogTrigger>
-                            <AlertDialogContent className="rounded-2xl shadow-2xl p-0 max-w-3xl w-full">
-                                <div className="flex flex-col md:flex-row max-h-[80vh] overflow-y-auto">
+                            <AlertDialogContent className="rounded-2xl shadow-2xl p-0 max-w-4xl w-full overflow-hidden">
+                                <div className="flex flex-col md:flex-row max-h-[85vh] overflow-y-auto">
                                     {/* Left: Requirements */}
-                                    <div className="flex-1 p-6">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className={`text-white px-3 py-1 rounded font-bold text-xs ${country.badgeColor}`}>{country.visaType}</span>
-                                            <span className="text-2xl font-bold text-blue-900">{country.name}</span>
+                                    <div className="flex-1 p-6 md:p-8">
+                                        {/* Gradient Header */}
+                                        <div className="bg-gradient-to-r from-primary to-blue-600 -mx-6 md:-mx-8 -mt-6 md:-mt-8 px-6 md:px-8 py-6 mb-6">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <Image src={country.flag} alt={country.name} width={50} height={50} className="rounded-full border-2 border-white shadow-lg" />
+                                                <div>
+                                                    <span className="text-2xl md:text-3xl font-bold text-white">{country.name}</span>
+                                                    <div className="flex items-center gap-2 mt-1">
+                                                        <span className={`text-white px-3 py-1 rounded-full font-bold text-xs ${country.badgeColor}`}>{country.visaType}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <h3 className="text-red-500 font-semibold text-lg mb-3">Required Documents</h3>
+                                        <h3 className="text-primary font-bold text-xl mb-4 flex items-center gap-2">
+                                            <span className="text-2xl">📋</span> Required Documents
+                                        </h3>
                                         <ol className="list-decimal pl-5 text-gray-800 text-base leading-relaxed">
                                             {Array.isArray(country.requirements) && country.requirements.length > 0 && typeof country.requirements[0] === 'string'
                                                 ? country.requirements.map((req, i) => (
@@ -444,22 +494,20 @@ export default function Visas() {
                                         </ol>
                                     </div>
                                     {/* Right: Info box */}
-                                    <div className="flex-1 bg-gray-50 border-l border-gray-200 p-6 flex flex-col items-center justify-between min-w-[260px]">
+                                    <div className="flex-1 bg-gradient-to-br from-gray-50 to-blue-50 border-l border-gray-200 p-6 md:p-8 flex flex-col justify-between min-w-[280px]">
                                         <div className="w-full">
-                                            <div className="flex justify-center mb-4">
-                                                <Image src={country.flag} alt={country.name} width={80} height={60} className="rounded shadow" />
-                                            </div>
+                                            <h3 className="text-primary font-bold text-lg mb-4 flex items-center gap-2">
+                                                <span className="text-xl">🌍</span> Country Information
+                                            </h3>
                                             {country.info && (
-                                                <table className="w-full text-sm mb-4">
-                                                    <tbody>
-                                                        {Object.entries(country.info).map(([key, value]) => (
-                                                            <tr key={key}>
-                                                                <td className="font-semibold pr-2 py-1 text-gray-700">{key}</td>
-                                                                <td className="text-gray-600 py-1">{value}</td>
-                                                            </tr>
-                                                        ))}
-                                                    </tbody>
-                                                </table>
+                                                <div className="space-y-3 mb-6">
+                                                    {Object.entries(country.info).map(([key, value]) => (
+                                                        <div key={key} className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                                            <p className="font-semibold text-xs text-gray-500 uppercase tracking-wide mb-1">{key}</p>
+                                                            <p className="text-gray-800 font-medium">{value}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             )}
                                         </div>
                                         {(country.validity || country.stay) && (
@@ -533,7 +581,7 @@ function VisaConsultationForm({ countryVisas }) {
 
     return (
         <div
-            className="max-w-lg mx-auto mt-12 rounded-2xl shadow-md p-0 border border-blue-200 relative overflow-hidden"
+            className="max-w-2xl mx-auto mt-16 rounded-2xl shadow-2xl p-0 border-2 border-primary/20 relative overflow-hidden"
             style={{
                 backgroundImage: 'url(/images/Rectangle.png)',
                 backgroundSize: 'cover',
@@ -541,35 +589,39 @@ function VisaConsultationForm({ countryVisas }) {
                 minHeight: '480px'
             }}
         >
-            <div className="inset-0 bg-white bg-opacity-50 z-0"></div>
-            <div className="relative z-10 p-8">
-                <h2 className="text-xl font-bold text-blue-900 mb-4 text-center">Visa Consultation Form</h2>
-                <form id="visa-consult-form" className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <div className="inset-0 bg-white bg-opacity-90 backdrop-blur-sm z-0"></div>
+            <div className="relative z-10 p-8 md:p-10">
+                <div className="text-center mb-6">
+                    <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-2">Get In Touch</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Visa Consultation Form</h2>
+                    <p className="text-gray-600">Fill out the form and our team will contact you shortly</p>
+                </div>
+                <form id="visa-consult-form" className="flex flex-col gap-5" onSubmit={handleSubmit}>
                     <label className="font-semibold text-gray-700">Name<span className="text-red-500">*</span>
-                        <input name="name" type="text" required className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                        <input name="name" type="text" required className="mt-2 w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Your full name" />
                     </label>
                     <label className="font-semibold text-gray-700">Email<span className="text-red-500">*</span>
-                        <input name="email" type="email" required className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                        <input name="email" type="email" required className="mt-2 w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="your.email@example.com" />
                     </label>
                     <label className="font-semibold text-gray-700">Phone<span className="text-red-500">*</span>
-                        <input name="phone" type="tel" required className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                        <input name="phone" type="tel" required className="mt-2 w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="+92 300 1234567" />
                     </label>
                     <label className="font-semibold text-gray-700">Visa Type<span className="text-red-500">*</span>
-                        <select name="visa" required className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200">
-                            <option value="" disabled>Select a visa</option>
+                        <select name="visa" required className="mt-2 w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-white">
+                            <option value="">Select a visa destination</option>
                             {countryVisas.map((visa, idx) => (
                                 <option key={idx} value={visa.name}>{visa.name}</option>
                             ))}
                         </select>
                     </label>
                     <label className="font-semibold text-gray-700">Message
-                        <textarea name="message" rows={3} className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" placeholder="Your query (optional)" />
+                        <textarea name="message" rows={4} className="mt-2 w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="Tell us about your travel plans..." />
                     </label>
-                    <button type="submit" className="mt-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors disabled:opacity-60" disabled={loading}>
-                        {loading ? "Submitting..." : "Submit"}
+                    <button type="submit" className="mt-4 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg transform hover:scale-105" disabled={loading}>
+                        {loading ? "Submitting..." : "Submit Consultation Request"}
                     </button>
-                    {success && <p className="text-green-600 text-center mt-2">{success}</p>}
-                    {error && <p className="text-red-600 text-center mt-2">{error}</p>}
+                    {success && <div className="bg-green-50 border-2 border-green-500 text-green-700 px-4 py-3 rounded-lg text-center font-medium">{success}</div>}
+                    {error && <div className="bg-red-50 border-2 border-red-500 text-red-700 px-4 py-3 rounded-lg text-center font-medium">{error}</div>}
                 </form>
             </div>
         </div>

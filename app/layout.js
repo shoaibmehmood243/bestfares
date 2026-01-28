@@ -4,7 +4,7 @@ import Header from "@/components/common/Header";
 import Banner from "@/components/common/Banner";
 import { FaPhoneAlt } from "react-icons/fa";
 import Script from 'next/script';
-import Footer from '@/components/common/Footer';
+import Footer from '@/components/common/Footer/index';
 import { Toaster } from 'react-hot-toast';
 
 const quicksand = Quicksand({
@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
             <FaPhoneAlt className='text-white text-2xl' />
           </a>
         </div>
-        <div className="z-10 w-full fixed backdrop-blur-sm bg-[hsla(0,0%,100%,.25)]">
+        <div className="z-20 w-full fixed backdrop-blur-sm bg-[hsla(0,0%,100%,.25)]">
           <Banner />
           <Header />
         </div>
