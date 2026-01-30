@@ -21,7 +21,7 @@ export default function Footer() {
                             <FaPhoneAlt className="text-xl" /> 03111-421-111
                         </li>
                         <li className="text-white my-3 text-sm flex items-center gap-2">
-                            <IoMdMail className="text-xl" /> support@bestfaress.com
+                            <IoMdMail className="text-xl" /> support@bestfares.com.pk
                         </li>
                         <li className="text-white my-3 text-sm flex items-start gap-2">
                             <FaLocationDot className="text-xl" /> Office No 03, First Floor, Al Latif Centre Main Boulevard Gulberg III Lahore.

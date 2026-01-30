@@ -13,7 +13,7 @@ export default function Banner() {
                 </a>
                 <p className="flex gap-1 items-center text-xs md:text-base border-l border-gray-300 pl-2">
                     <BiLogoGmail className="text-[#C71610] text-2xl" />
-                    <a href="mailto:support@bestfaress.com">support@bestfaress.com</a>
+                    <a href="mailto:support@bestfares.com.pk">support@bestfares.com.pk</a>
                 </p>
             </div>
         </div>
