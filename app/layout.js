@@ -2,7 +2,7 @@ import { Quicksand } from 'next/font/google';
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Banner from "@/components/common/Banner";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import Script from 'next/script';
 import Footer from '@/components/common/Footer/index';
 import { Toaster } from 'react-hot-toast';
@@ -16,20 +16,27 @@ const quicksand = Quicksand({
 });
 
 export const metadata = {
-  title: "Best Fares",
-  description: "Best Travel Agency in Lahore, offering the best fares for flights, tours, and travel packages.",
-  keywords: ["Best Fares", "Travel Agency", "Flights", "Tours", "Lahore"],
+  metadataBase: new URL("https://bestfaress.com"),
+  title: {
+    default: "Best Fares - Premier Travel Agency in Lahore",
+    template: "%s | Best Fares"
+  },
+  description: "Best Fares is your trusted travel partner in Lahore, offering unbeatable prices for flights, hotels, Umrah packages, and tour planning. Your adventure, our expertise.",
+  keywords: ["Best Fares", "Travel Agency Lahore", "Cheap Flights Pakistan", "Umrah Packages 2026", "Tours from Pakistan", "Airlines Tickets", "Hotel Booking"],
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
-    title: "Best Fares",
-    description: "Best Travel Agency in Lahore, offering the best fares for flights, tours, and travel packages.",
+    title: "Best Fares - Best Travel Agency in Lahore",
+    description: "Book cheap flights, hotels, and Umrah packages with Best Fares. Transparent pricing and 24/7 support for all your travel needs.",
     url: "https://bestfaress.com",
     siteName: "Best Fares",
     images: [
       {
-        url: "https://www.bestfaress.com/logo.png",
+        url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Best Fares Logo",
+        alt: "Best Fares Travel Agency",
       },
     ],
     locale: "en_US",
@@ -37,9 +44,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Fares",
-    description: "Best Travel Agency in Lahore, offering the best fares for flights, tours, and travel packages.",
-    images: ["https://www.bestfaress.com/logo.png"],
+    title: "Best Fares - Your Adventure, Our Expertise",
+    description: "Discover the world with the best travel deals on flights and tours with Best Fares.",
+    images: ["/logo.png"],
   },
 };
 
@@ -85,11 +92,16 @@ export default function RootLayout({ children }) {
         className={`${quicksand.variable} font-quicksand antialiased`}
       >
         <div className='fixed bottom-4 right-4 z-10'>
-          <a href='tel:+923111421111' className='flex justify-center items-center rounded-full bg-primary w-14 h-14 shadow-lg hover:scale-110 transition-transform duration-2000 animate-pulse hover:animate-bounce'>
-            <FaPhoneAlt className='text-white text-2xl' />
+          <a
+            href="https://wa.me/923111421111?text=Hello%20BestFares,%20I'm%20looking%20for%20"
+            target="_blank"
+            rel="noopener noreferrer"
+            className='flex justify-center items-center rounded-full bg-[#25D366] w-14 h-14 shadow-lg hover:scale-110 transition-transform duration-2000 animate-pulse hover:animate-bounce'
+          >
+            <FaWhatsapp className='text-white text-3xl' />
           </a>
         </div>
-        <div className="z-20 w-full fixed backdrop-blur-sm bg-[hsla(0,0%,100%,.25)]">
+        <div className="z-[100] w-full fixed top-0 backdrop-blur-md bg-white/60 border-b border-white/20 shadow-sm">
           <Banner />
           <Header />
         </div>

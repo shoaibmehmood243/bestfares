@@ -7,12 +7,22 @@ import { IoMdMail } from "react-icons/io";
 export default function Footer() {
     return (
         <footer id="footer" className="pt-10 bg-primary">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 px-10 pb-5">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-5 px-10 pb-5">
                 <div>
                     <Link href='/'>
                         <Image src="/logo-dark.png" alt="Logo" width={150} height={24} />
                     </Link>
                     <p className="text-white text-sm">BestFares is a travel agency offering great deals on flights, hotels, visas and tours. We make trip planning easy with transparent pricing and 24/7 customer support.</p>
+                </div>
+                <div className="px-2">
+                    <h6 className="text-white text-lg font-bold mb-3">Quick Links</h6>
+                    <ul className="space-y-2">
+                        <li><Link href="/flights" className="text-white text-sm hover:underline">Flights</Link></li>
+                        <li><Link href="/hotels" className="text-white text-sm hover:underline">Hotels</Link></li>
+                        <li><Link href="/umrah" className="text-white text-sm hover:underline">Umrah</Link></li>
+                        <li><Link href="/tours" className="text-white text-sm hover:underline">Tours</Link></li>
+                        <li><Link href="/visas" className="text-white text-sm hover:underline">Visas</Link></li>
+                    </ul>
                 </div>
                 <div className="px-2">
                     <h6 className="text-white text-lg font-bold mb-3">Contact Us</h6>
@@ -21,7 +31,7 @@ export default function Footer() {
                             <FaPhoneAlt className="text-xl" /> 03111-421-111
                         </li>
                         <li className="text-white my-3 text-sm flex items-center gap-2">
-                            <IoMdMail className="text-xl" /> support@bestfares.com.pk
+                            <IoMdMail className="text-xl" /> support@bestfaress.com
                         </li>
                         <li className="text-white my-3 text-sm flex items-start gap-2">
                             <FaLocationDot className="text-xl" /> Office No 03, First Floor, Al Latif Centre Main Boulevard Gulberg III Lahore.

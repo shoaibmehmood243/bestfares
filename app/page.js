@@ -20,7 +20,7 @@ export default function Home() {
       <PopularAirlines />
       {/* <TestimonialsSection /> */}
       <CallToAction />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
     </div>
   );
 }
