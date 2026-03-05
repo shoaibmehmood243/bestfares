@@ -31,7 +31,7 @@ export default function Header() {
                                 alt="Best Fares Travel Logo"
                                 width={120}
                                 height={60}
-                                className="w-auto h-8 md:h-14 object-contain"
+                                className="w-auto h-12 md:h-14 object-contain"
                                 priority
                             />
                         </div>
@@ -63,29 +63,41 @@ export default function Header() {
                 </div>
             </div>
 
-            {/* Mobile Navigation Overlay */}
-            <div className={`lg:hidden fixed inset-0 z-[105] bg-blue-950/95 backdrop-blur-xl transition-all duration-500 flex flex-col items-center justify-center gap-6 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-x-full'}`}>
-                {navLinks.map((link, idx) => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`text-2xl font-bold text-white transition-all hover:text-cyan-400 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                        style={{ transitionDelay: `${idx * 100}ms` }}
-                        onClick={() => setIsMenuOpen(false)}
-                    >
-                        {link.label}
-                    </Link>
-                ))}
+            {/* Mobile Navigation Overlay - Enhanced Layout */}
+            <div className={`lg:hidden fixed inset-0 z-[105] bg-blue-950/98 backdrop-blur-2xl transition-all duration-500 overflow-hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-x-full'}`}>
+                <div className="flex flex-col items-center justify-center min-h-[100dvh] pt-24 pb-12 gap-8 px-6">
+                    {navLinks.map((link, idx) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className={`text-3xl font-bold text-white transition-all hover:text-cyan-400 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+                            style={{
+                                transitionDelay: `${idx * 75}ms`,
+                                transitionProperty: 'all',
+                                transitionDuration: '400ms'
+                            }}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
 
-                <div className="mt-4 flex flex-col items-center gap-4 px-4 w-full">
-                    <a
-                        href="https://wa.me/923111421111"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full max-w-[280px] bg-[#25D366] text-white py-4 rounded-2xl font-bold flex justify-center items-center gap-3 shadow-lg transform active:scale-95 transition-all"
-                    >
-                        Chat on WhatsApp
-                    </a>
+                    <div className="mt-8 flex flex-col items-center gap-6 w-full max-w-sm">
+                        <div className="h-px w-24 bg-white/20"></div>
+                        <a
+                            href="https://wa.me/923111421111"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full bg-[#25D366] text-white py-5 rounded-3xl font-bold flex justify-center items-center gap-3 shadow-xl transform active:scale-95 transition-all text-lg"
+                        >
+                            Chat on WhatsApp
+                        </a>
+
+                        <div className="text-white/60 text-sm flex flex-col items-center gap-1 mt-4">
+                            <p>Need immediate help?</p>
+                            <a href="tel:03111421111" className="text-white font-bold text-lg">03111-421-111</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

@@ -101,7 +101,9 @@ export default function RootLayout({ children }) {
             <FaWhatsapp className='text-white text-3xl' />
           </a>
         </div>
-        <div className="z-[100] w-full fixed top-0 backdrop-blur-md bg-white/60 border-b border-white/20 shadow-sm">
+        <div className="z-[100] w-full fixed top-0">
+          {/* Background Layer with backdrop filter - separated to avoid clipping children */}
+          <div className="absolute inset-0 backdrop-blur-md bg-white/80 border-b border-white/20 shadow-sm z-[-1]"></div>
           <Banner />
           <Header />
         </div>
