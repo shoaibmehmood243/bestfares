@@ -546,37 +546,14 @@ function VisaConsultationForm({ countryVisas }) {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        setLoading(true);
-        setSuccess("");
-        setError("");
         const form = e.target;
-        const data = {
-            name: form.name.value,
-            email: form.email.value,
-            phone: form.phone.value,
-            visa: form.visa.value,
-            message: form.message.value
-        };
-        try {
-            const res = await fetch("/api/email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-            const result = await res.json();
-            if (res.ok) {
-                setSuccess("Thank you for your query! We will contact you soon.");
-                form.reset();
-            } else {
-                setError(result.error || "Something went wrong. Please try again.");
-            }
-        } catch (err) {
-            setError("Network error. Please try again.");
-        } finally {
-            setLoading(false);
-        }
+        const message = `*New Visa Consultation Inquiry from BestFares*%0A%0A*Name:* ${form.name.value}%0A*Phone:* ${form.phone.value}%0A*Email:* ${form.email.value}%0A*Visa Destination:* ${form.visa.value}%0A*Message:* ${form.message.value || "None"}`;
+
+        window.open(`https://wa.me/923111421111?text=${message}`, "_blank");
+        setSuccess("Redirecting to WhatsApp for visa consultation...");
+        form.reset();
     }
 
     return (

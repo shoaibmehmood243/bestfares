@@ -64,7 +64,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="border-t border-gray-300 py-5">
-                <p className="text-gray-300 text-center">© 2024 Best Fares. All rights reserved</p>
+                <p className="text-gray-300 text-center">© {new Date().getFullYear()} Best Fares. All rights reserved</p>
             </div>
         </footer>
     )

@@ -8,36 +8,14 @@ export default function HotelsPage() {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        setLoading(true);
-        setSuccess("");
-        setError("");
         const form = e.target;
-        const data = {
-            name: form.name.value,
-            email: form.email.value,
-            phone: form.phone.value,
-            service: "Hotels",
-            message: `Hotel Inquiry: Destination ${form.destination.value} from ${form.checkin.value} to ${form.checkout.value}. Rooms: ${form.rooms.value}. Details: ${form.message.value}`
-        };
-        try {
-            const res = await fetch("/api/email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-            if (res.ok) {
-                setSuccess("Success! Our experts will find the best hotels for your budget.");
-                form.reset();
-            } else {
-                setError("Something went wrong. Please try again.");
-            }
-        } catch (err) {
-            setError("Network error. Please try again.");
-        } finally {
-            setLoading(false);
-        }
+        const message = `*New Hotel Inquiry from BestFares*%0A%0A*Name:* ${form.name.value}%0A*Phone:* ${form.phone.value}%0A*Destination:* ${form.destination.value}%0A*Check-in:* ${form.checkin.value}%0A*Check-out:* ${form.checkout.value}%0A*Rooms/Guests:* ${form.rooms.value}%0A*Requests:* ${form.message.value || "None"}`;
+
+        window.open(`https://wa.me/923111421111?text=${message}`, "_blank");
+        setSuccess("Redirecting to WhatsApp for instant quote...");
+        form.reset();
     }
 
     return (

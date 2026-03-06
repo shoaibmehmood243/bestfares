@@ -8,36 +8,14 @@ export default function ToursPage() {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        setLoading(true);
-        setSuccess("");
-        setError("");
         const form = e.target;
-        const data = {
-            name: form.name.value,
-            email: form.email.value,
-            phone: form.phone.value,
-            service: "Tours",
-            message: `Tour Inquiry: Destination ${form.destination.value} for ${form.travelers.value} persons. Duration: ${form.duration.value}. Details: ${form.message.value}`
-        };
-        try {
-            const res = await fetch("/api/email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-            if (res.ok) {
-                setSuccess("Success! Our tour specialists will design your dream vacation.");
-                form.reset();
-            } else {
-                setError("Something went wrong. Please try again.");
-            }
-        } catch (err) {
-            setError("Network error. Please try again.");
-        } finally {
-            setLoading(false);
-        }
+        const message = `*New Tour Inquiry from BestFares*%0A%0A*Name:* ${form.name.value}%0A*Phone:* ${form.phone.value}%0A*Destination:* ${form.destination.value}%0A*Travelers:* ${form.travelers.value}%0A*Duration:* ${form.duration.value} Days%0A*Interests:* ${form.message.value || "None"}`;
+
+        window.open(`https://wa.me/923111421111?text=${message}`, "_blank");
+        setSuccess("Redirecting to WhatsApp for your custom itinerary...");
+        form.reset();
     }
 
     return (

@@ -1,52 +1,29 @@
 "use client";
 import { useState } from "react";
-import { sendEmail } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { toast } from 'react-hot-toast';
 
 export default function FlightQuerySection() {
-    const [loading, setLoading] = useState(false);
-    const [statusMessage, setStatusMessage] = useState("");
-    const [statusType, setStatusType] = useState("success");
 
     function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
 
-        const data = {
-            fullName: formData.get("fullName"),
-            email: formData.get("email"),
-            phone: formData.get("phone"),
-            fromCity: formData.get("fromCity"),
-            toCity: formData.get("toCity"),
-            departing: formData.get("departing"),
-            returning: formData.get("returning"),
-            adults: formData.get("adults"),
-            children: formData.get("children"),
-        };
+        const fullName = formData.get("fullName");
+        const phone = formData.get("phone");
+        const fromCity = formData.get("fromCity");
+        const toCity = formData.get("toCity");
+        const departing = formData.get("departing");
+        const returning = formData.get("returning");
+        const adults = formData.get("adults");
+        const children = formData.get("children");
 
-        setLoading(true);
-        setStatusMessage("");
+        const message = `*New Flight Inquiry from BestFares*%0A%0A*Name:* ${fullName}%0A*Phone:* ${phone}%0A*From:* ${fromCity}%0A*To:* ${toCity}%0A*Departing:* ${departing}%0A*Returning:* ${returning || "One-way"}%0A*Adults:* ${adults}%0A*Children:* ${children || 0}`;
 
-        sendEmail(data)
-            .then((res) => {
-                if (res.message) {
-                    setStatusType("success");
-                    toast.success("✅ Email sent successfully!");
-                    form.reset();
-                } else {
-                    setStatusType("error");
-                    toast.error("❌ Failed to send email.");
-                }
-            })
-            .catch(() => {
-                setStatusType("error");
-                toast.error("❌ Error sending email.");
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        window.open(`https://wa.me/923111421111?text=${message}`, "_blank");
+        toast.success("Redirecting to WhatsApp...");
+        form.reset();
     }
 
     const floatingInput = (name, type, label, required = false) => (
@@ -100,12 +77,6 @@ export default function FlightQuerySection() {
                     Your adventure, Our expertise
                 </p>
 
-                {statusMessage && (
-                    <p className={`text-center mb-4 font-medium ${statusType === "success" ? "text-green-600" : "text-red-600"}`}>
-                        {statusMessage}
-                    </p>
-                )}
-
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     {floatingInput("fullName", "text", "Full Name", true)}
                     <div className="flex gap-4">
@@ -124,8 +95,8 @@ export default function FlightQuerySection() {
                         {floatingSelect("adults", "No. of Adults", Array.from({ length: 10 }, (_, i) => ({ value: i + 1, label: `${i + 1}` })), true)}
                         {floatingSelect("children", "No. of Children", Array.from({ length: 10 }, (_, i) => ({ value: i, label: `${i}` })))}
                     </div>
-                    <Button className="w-full mt-2" type="submit" disabled={loading}>
-                        {loading ? "Sending..." : "Submit"}
+                    <Button className="w-full mt-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold h-12 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all" type="submit">
+                        Submit on WhatsApp
                     </Button>
                 </form>
             </div>

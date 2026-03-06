@@ -1,44 +1,23 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { GiCommercialAirplane } from "react-icons/gi";
+import PopularAirlines from "@/components/home/PopularAirlines";
+import PopularDestinations from "@/components/home/PopularDestinations";
+import AboutSection from "@/components/home/AboutSection";
+import BankInfoSection from "@/components/home/BankInfoSection";
 import { FaTicketAlt, FaShieldAlt, FaClock } from "react-icons/fa";
 
 export default function FlightsPage() {
-    const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
-    const [error, setError] = useState("");
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        setLoading(true);
-        setSuccess("");
-        setError("");
         const form = e.target;
-        const data = {
-            name: form.name.value,
-            email: form.email.value,
-            phone: form.phone.value,
-            service: "Flights",
-            message: `Flight Inquiry: From ${form.from.value} to ${form.to.value} on ${form.date.value}. Travelers: ${form.travelers.value}. Details: ${form.message.value}`
-        };
-        try {
-            const res = await fetch("/api/email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-            if (res.ok) {
-                setSuccess("Inquiry sent! Our travel experts will call you shortly with the best fares.");
-                form.reset();
-            } else {
-                setError("Something went wrong. Please try again or call us directly.");
-            }
-        } catch (err) {
-            setError("Network error. Please try again.");
-        } finally {
-            setLoading(false);
-        }
+        const message = `*New Flight Inquiry from BestFares*%0A%0A*Name:* ${form.name.value}%0A*Phone:* ${form.phone.value}%0A*Email:* ${form.email.value || "N/A"}%0A*From:* ${form.from.value}%0A*To:* ${form.to.value}%0A*Date:* ${form.date.value}%0A*Travelers:* ${form.travelers.value}%0A*Details:* ${form.message.value || "None"}`;
+
+        window.open(`https://wa.me/923111421111?text=${message}`, "_blank");
+        setSuccess("Redirecting to WhatsApp...");
+        form.reset();
     }
 
     return (
@@ -63,7 +42,10 @@ export default function FlightsPage() {
                 </div>
             </section>
 
-            {/* Content & Form Section */}
+            {/* Airline Partners Section (Using homepage component) */}
+            <PopularAirlines />
+
+            {/* Content & Form Section (Form is back where it was) */}
             <section className="py-20 px-4 md:px-10 bg-gray-50">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
                     {/* Left side: Information */}
@@ -102,85 +84,83 @@ export default function FlightsPage() {
                             </div>
                         </div>
 
-                        <div className="mt-12 p-8 bg-primary rounded-3xl text-white">
+                        <div className="mt-12 p-8 bg-primary rounded-3xl text-white shadow-xl relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                             <h3 className="text-2xl font-bold mb-4">Need Help Now?</h3>
                             <p className="mb-6 opacity-90">Prefer to speak with an agent directly? Call or WhatsApp us anytime for an immediate quote.</p>
-                            <a href="https://wa.me/923111421111" className="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors inline-block">
+                            <a href="https://wa.me/923111421111" className="bg-white text-primary px-8 py-3 rounded-full font-black hover:bg-gray-100 transition-all hover:scale-105 inline-block shadow-lg">
                                 Chat on WhatsApp
                             </a>
                         </div>
                     </div>
 
                     {/* Right side: Inquiry Form */}
-                    <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-gray-100">
-                        <div className="text-center mb-8">
-                            <h2 className="text-2xl font-bold text-gray-800">Request a Flight Quote</h2>
-                            <p className="text-gray-500">Fill in your details and we'll find the best available fares for you.</p>
+                    <div className="bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-10 border border-gray-100 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+                        <div className="relative z-10">
+                            <div className="text-center mb-8">
+                                <h2 className="text-2xl font-bold text-gray-800 underline decoration-primary/30 decoration-4 underline-offset-8">Request a Flight Quote</h2>
+                                <p className="text-gray-500 mt-4">Direct WhatsApp submission for instant support.</p>
+                            </div>
+
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <label className="block">
+                                        <span className="text-sm font-semibold text-gray-700 ml-1">From</span>
+                                        <input name="from" type="text" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" placeholder="City or Airport" />
+                                    </label>
+                                    <label className="block">
+                                        <span className="text-sm font-semibold text-gray-700 ml-1">To</span>
+                                        <input name="to" type="text" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" placeholder="City or Airport" />
+                                    </label>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <label className="block">
+                                        <span className="text-sm font-semibold text-gray-700 ml-1">Departure Date</span>
+                                        <input name="date" type="date" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" />
+                                    </label>
+                                    <label className="block">
+                                        <span className="text-sm font-semibold text-gray-700 ml-1">Travelers</span>
+                                        <input name="travelers" type="number" min="1" defaultValue="1" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" />
+                                    </label>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <label className="block">
+                                        <span className="text-sm font-semibold text-gray-700 ml-1">Full Name</span>
+                                        <input name="name" type="text" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" placeholder="John Doe" />
+                                    </label>
+                                    <label className="block">
+                                        <span className="text-sm font-semibold text-gray-700 ml-1">Phone Number</span>
+                                        <input name="phone" type="tel" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" placeholder="+92 3XX XXXXXXX" />
+                                    </label>
+                                </div>
+
+                                <label className="block">
+                                    <span className="text-sm font-semibold text-gray-700 ml-1">Email Address (Optional)</span>
+                                    <input name="email" type="email" className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-gray-50/50" placeholder="john@example.com" />
+                                </label>
+
+                                <label className="block">
+                                    <span className="text-sm font-semibold text-gray-700 ml-1">Additional Requirements</span>
+                                    <textarea name="message" rows={3} className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none bg-gray-50/50" placeholder="Preferred airline, class, etc." />
+                                </label>
+
+                                <button
+                                    type="submit"
+                                    className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-black py-5 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 text-lg"
+                                >
+                                    Submit on WhatsApp
+                                </button>
+
+                                {success && (
+                                    <div className="bg-green-50 border-2 border-green-500 text-green-700 px-4 py-3 rounded-xl text-center font-bold">
+                                        {success}
+                                    </div>
+                                )}
+                            </form>
                         </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-5">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <label className="block">
-                                    <span className="text-sm font-semibold text-gray-700 ml-1">From</span>
-                                    <input name="from" type="text" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="City or Airport" />
-                                </label>
-                                <label className="block">
-                                    <span className="text-sm font-semibold text-gray-700 ml-1">To</span>
-                                    <input name="to" type="text" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="City or Airport" />
-                                </label>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <label className="block">
-                                    <span className="text-sm font-semibold text-gray-700 ml-1">Departure Date</span>
-                                    <input name="date" type="date" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
-                                </label>
-                                <label className="block">
-                                    <span className="text-sm font-semibold text-gray-700 ml-1">Travelers</span>
-                                    <input name="travelers" type="number" min="1" defaultValue="1" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
-                                </label>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <label className="block">
-                                    <span className="text-sm font-semibold text-gray-700 ml-1">Full Name</span>
-                                    <input name="name" type="text" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="John Doe" />
-                                </label>
-                                <label className="block">
-                                    <span className="text-sm font-semibold text-gray-700 ml-1">Phone Number</span>
-                                    <input name="phone" type="tel" required className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="+92 3XX XXXXXXX" />
-                                </label>
-                            </div>
-
-                            <label className="block">
-                                <span className="text-sm font-semibold text-gray-700 ml-1">Email Address (Optional)</span>
-                                <input name="email" type="email" className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="john@example.com" />
-                            </label>
-
-                            <label className="block">
-                                <span className="text-sm font-semibold text-gray-700 ml-1">Additional Requirements</span>
-                                <textarea name="message" rows={3} className="mt-1 w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="Preferred airline, class, etc." />
-                            </label>
-
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70"
-                            >
-                                {loading ? "Finding Fares..." : "Get My Quote"}
-                            </button>
-
-                            {success && (
-                                <div className="bg-green-50 border-2 border-green-500 text-green-700 px-4 py-3 rounded-xl text-center font-medium animate-in fade-in slide-in-from-top-2">
-                                    {success}
-                                </div>
-                            )}
-                            {error && (
-                                <div className="bg-red-50 border-2 border-red-500 text-red-700 px-4 py-3 rounded-xl text-center font-medium animate-in fade-in slide-in-from-top-2">
-                                    {error}
-                                </div>
-                            )}
-                        </form>
                     </div>
                 </div>
             </section>

@@ -4,6 +4,7 @@ import AboutSection from "@/components/home/AboutSection";
 import PopularDestinations from "@/components/home/PopularDestinations";
 import PopularAirlines from "@/components/home/PopularAirlines";
 // import TestimonialsSection from "@/components/home/TestimonialsSection";
+import BankInfoSection from "@/components/home/BankInfoSection";
 import CallToAction from "@/components/home/CallToAction";
 import ScrollToTop from "@/components/common/ScrollToTop";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <PopularDestinations />
       <PopularAirlines />
       {/* <TestimonialsSection /> */}
+      <BankInfoSection />
       <CallToAction />
       {/* <ScrollToTop /> */}
     </div>

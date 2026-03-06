@@ -13,7 +13,7 @@ export async function POST(request) {
       secure: true,
       auth: {
         user: "support@bestfaress.com",
-        pass: "Bestfaress786@", // ⚠️ Don't hardcode this in production!
+        pass: "Bestfaress786", // ⚠️ Don't hardcode this in production!
       },
     });
     const mailBody = `\nNew Visa Consultation Query Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nVisa Type: ${visa}\nMessage: ${message || "N/A"}\n\nSubmitted via BestFaress.com\n`;

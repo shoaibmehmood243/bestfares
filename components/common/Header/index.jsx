@@ -20,18 +20,18 @@ export default function Header() {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
-        <nav className="relative z-[100] transition-all duration-300">
+        <nav className="relative z-[100] transition-all duration-300 bg-[#2F3192]">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="flex items-center justify-between py-2">
                     {/* Logo Section - Enhanced Visibility */}
                     <Link href='/' className="relative z-[110] group flex items-center">
-                        <div className="rounded-xl transition-all duration-300 group-hover:scale-105">
+                        <div className="rounded-xl">
                             <Image
-                                src="/logo.png"
+                                src="/logo-dark.png"
                                 alt="Best Fares Travel Logo"
                                 width={120}
                                 height={60}
-                                className="w-auto h-12 md:h-14 object-contain"
+                                className="w-44 h-12 md:h-16 object-contain"
                                 priority
                             />
                         </div>
@@ -43,10 +43,10 @@ export default function Header() {
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className="font-bold text-blue-900 hover:text-primary transition-all px-3 py-2 text-sm xl:text-base relative group"
+                                    className="font-bold text-white hover:text-blue-300 transition-all px-3 py-2 text-sm xl:text-base relative group"
                                 >
                                     {link.label}
-                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
                                 </Link>
                             </li>
                         ))}
@@ -54,7 +54,7 @@ export default function Header() {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="lg:hidden relative z-[110] p-2 text-blue-900 bg-white/50 backdrop-blur-sm rounded-lg hover:bg-white/80 transition-colors border border-white/20 shadow-sm"
+                        className="lg:hidden relative z-[110] p-2 text-white bg-white/50 backdrop-blur-sm rounded-lg hover:bg-white/80 transition-colors border border-white/20 shadow-sm"
                         onClick={toggleMenu}
                         aria-label="Toggle Navigation"
                     >
