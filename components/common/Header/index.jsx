@@ -14,6 +14,7 @@ export default function Header() {
         { href: "/umrah", label: "Umrah" },
         { href: "/tours", label: "Tours" },
         { href: "/visas", label: "Visas" },
+        { href: "/blog", label: "Blog" },
     ];
 
     // Close menu when clicking outside or on a link

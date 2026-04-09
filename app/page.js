@@ -3,6 +3,8 @@ import ServicesSection from "@/components/home/ServicesSection";
 import AboutSection from "@/components/home/AboutSection";
 import PopularDestinations from "@/components/home/PopularDestinations";
 import PopularAirlines from "@/components/home/PopularAirlines";
+import HomeBlogs from "@/components/home/HomeBlogs";
+import FeatureHighlights from "@/components/home/FeatureHighlights";
 // import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BankInfoSection from "@/components/home/BankInfoSection";
 import CallToAction from "@/components/home/CallToAction";
@@ -17,9 +19,11 @@ export default function Home() {
         <ServicesSection />
       </section>
       <AboutSection />
+      <FeatureHighlights />
       <PopularDestinations />
       <PopularAirlines />
       {/* <TestimonialsSection /> */}
+      <HomeBlogs />
       <BankInfoSection />
       <CallToAction />
       {/* <ScrollToTop /> */}

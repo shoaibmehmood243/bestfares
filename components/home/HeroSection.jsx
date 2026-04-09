@@ -14,7 +14,7 @@ export default function HeroSection() {
       {/* Gradient Overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent z-0"></div>
 
-      <div className={`relative z-10 flex flex-col md:flex-row justify-center md:justify-between items-center min-h-screen px-4 md:px-12 py-40 md:py-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-10 flex flex-col md:flex-row justify-center md:justify-between items-center min-h-[calc(100vh-150px)] md:min-h-[calc(100vh-120px)] px-4 md:px-12 py-10 md:py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         {/* Left Content */}
         <div className="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0 text-white md:mr-20">
           <div className="space-y-6">

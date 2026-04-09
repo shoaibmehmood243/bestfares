@@ -6,6 +6,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'www.facebook.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+                port: '',
+            },
         ],
     },
 };

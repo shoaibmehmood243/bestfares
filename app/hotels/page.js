@@ -20,7 +20,7 @@ export default function HotelsPage() {
 
     return (
         <div className="min-h-screen">
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[40vh] md:min-h-[60vh] py-12 md:py-20 flex items-center justify-center overflow-hidden">
                 <Image
                     src="/images/hotels.png"
                     alt="Hotels Hero"
@@ -30,7 +30,7 @@ export default function HotelsPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-0"></div>
                 <div className="relative z-10 text-center px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+                    <h1 className="text-3xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
                         Your Home <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Away From Home</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-lg">

@@ -20,7 +20,7 @@ export default function ToursPage() {
 
     return (
         <div className="min-h-screen">
-            <section className="relative h-[65vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[40vh] md:min-h-[65vh] py-12 md:py-20 flex items-center justify-center overflow-hidden">
                 <Image
                     src="/images/tours.jpg"
                     alt="Tours Hero"
@@ -30,7 +30,7 @@ export default function ToursPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-0"></div>
                 <div className="relative z-10 text-center px-4">
-                    <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
+                    <h1 className="text-3xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
                         Adventure <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Awaits You</span>
                     </h1>
                     <p className="text-lg md:text-2xl text-white max-w-3xl mx-auto font-medium drop-shadow-lg">

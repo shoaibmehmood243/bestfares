@@ -20,7 +20,7 @@ export default function UmrahPage() {
 
     return (
         <div className="min-h-screen">
-            <section className="relative h-[65vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[40vh] md:min-h-[65vh] py-12 md:py-20 flex items-center justify-center overflow-hidden">
                 <Image
                     src="/images/umrah.jpeg"
                     alt="Umrah Hero"
@@ -30,7 +30,7 @@ export default function UmrahPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-0"></div>
                 <div className="relative z-10 text-center px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+                    <h1 className="text-3xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
                         A Spiritual <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-200">Journey of a Lifetime</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto font-medium shadow-black drop-shadow-lg">

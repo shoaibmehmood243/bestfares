@@ -63,7 +63,8 @@ export default function BankInfoSection() {
                     {bankDetails.map((bank, index) => (
                         <div
                             key={index}
-                            className={`relative rounded-3xl overflow-hidden shadow-2xl border-t-8 border-[${bank.accentColor}] bg-[${bank.accentColor}] transition-all duration-300 hover:scale-[1.02] group`}
+                            style={{ borderTopColor: bank.accentColor, backgroundColor: bank.accentColor }}
+                            className={`relative rounded-3xl overflow-hidden shadow-2xl border-t-8 transition-all duration-300 hover:scale-[1.02] group`}
                         >
                             {/* Glassmorphism accent */}
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-primary/10"></div>

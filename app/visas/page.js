@@ -389,13 +389,13 @@ export default function Visas() {
     return (
         <div id="visa">
             <section id="hero" className="relative">
-                <div className="visa absolute z-[1] min-h-screen w-full flex justify-center items-center flex-col">
+                <div className="visa absolute z-[1] min-h-[calc(100vh-150px)] md:min-h-[calc(100vh-120px)] w-full flex justify-center items-center flex-col py-12 md:py-20">
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-0"></div>
 
                     {/* Content */}
                     <div className="relative z-10 px-4">
-                        <h1 className="text-4xl md:text-6xl font-bold mx-auto max-w-4xl text-center leading-tight text-white drop-shadow-2xl animate-fadeIn">
+                        <h1 className="text-3xl md:text-6xl font-bold mx-auto max-w-4xl text-center leading-tight text-white drop-shadow-2xl animate-fadeIn">
                             Get Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Visa</span> Hassle-Free
                         </h1>
                         <p className="text-lg md:text-xl mx-auto max-w-2xl text-center mt-6 text-gray-100 font-medium drop-shadow-lg animate-fadeIn" style={{ animationDelay: '200ms' }}>
@@ -419,7 +419,7 @@ export default function Visas() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-custom-gradient min-h-screen relative w-full"></div>
+                <div className="bg-custom-gradient min-h-[calc(100vh-150px)] md:min-h-[calc(100vh-120px)] relative w-full"></div>
             </section>
             <section id="visas" className="pt-20 pb-10 px-2 md:px-10 bg-gradient-to-b from-gray-50 to-white">
                 <div className="text-center mb-12">
