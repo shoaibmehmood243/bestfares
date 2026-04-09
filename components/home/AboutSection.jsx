@@ -78,7 +78,7 @@ export default function AboutSection() {
                     </h2>
 
                     <p className="text-gray-600 text-[1.05rem] leading-[1.8] mb-10">
-                        As a leading <span className="text-[#E91E63] font-bold">visa consultant in Lahore</span>, Ali Baba Travel Advisor, we curate exceptional trips with our specially designed <span className="text-[#E91E63] font-bold">world tour package</span> deals. From exotic beaches to vibrant cities, we open the doors to new experiences. Recognized as the <span className="text-[#E91E63] font-bold font-black">best travel agency in Pakistan</span>, we are committed to offering top notch service, ensuring your travels are exciting, memorable, and completely hassle free.
+                        As a leading <span className="text-[#E91E63] font-bold">visa consultant in Lahore</span>, Bestfares Travel & Tours Pvt Ltd, we curate exceptional trips with our specially designed <span className="text-[#E91E63] font-bold">world tour package</span> deals. From exotic beaches to vibrant cities, we open the doors to new experiences. Recognized as the <span className="text-[#E91E63] font-bold font-black">best travel agency in Pakistan</span>, we are committed to offering top notch service, ensuring your travels are exciting, memorable, and completely hassle free.
                     </p>
 
                     {/* Stats Grid */}
